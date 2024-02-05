@@ -22,7 +22,7 @@ import com.ltim.testproject.service.CustomerService;
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
-
+   
 	private CustomerService customerService;
 
 	@Autowired
@@ -50,8 +50,9 @@ public class CustomerController {
 		return new ResponseEntity<CustomerResponse>(customerList, HttpStatus.OK);
 	}
 
-	@PostMapping
+	@PostMapping("/create")
 	public ResponseEntity<CustomerDTO> addNewCustomer(@RequestBody CustomerDTO customerDTO) throws ParseException {
+		System.out.println("inside post method::");
 		return new ResponseEntity<CustomerDTO>(customerService.addCustomer(customerDTO), HttpStatus.OK);
 	}
 
@@ -62,10 +63,12 @@ public class CustomerController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteCustomer(@PathVariable long id) {
-		Boolean responseFlag = customerService.deleteCustomer(id);
-		return responseFlag ? new ResponseEntity<String>("Customer deleted successfully.", HttpStatus.NO_CONTENT) 
-                            : new ResponseEntity<String>("Customer not found", HttpStatus.NOT_FOUND);
+	public ResponseEntity<Void> deleteCustomer(@PathVariable long id) {		
+		Boolean responseFlag = customerService.deleteCustomer(id);		
+		ResponseEntity<Void> response = responseFlag ? new ResponseEntity<Void>(HttpStatus.NO_CONTENT) 
+                : new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+		return response;
+		
 	}
 	
 	

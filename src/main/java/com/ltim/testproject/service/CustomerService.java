@@ -69,6 +69,7 @@ public class CustomerService {
 		} catch (Exception e) {
 			responseFlag = false;
 		}
+		System.out.println("delete flag tracl::");
 		return responseFlag;
 	}
 

@@ -18,9 +18,10 @@ import lombok.NoArgsConstructor;
 public class Customer {
 
 	
-	@SequenceGenerator(name="Cust_Gen", sequenceName="CUSTOMER_SEQ", allocationSize = 0)
+	@SequenceGenerator(name="Cust_Gen", sequenceName="CUSTOMER_SEQUENCE", allocationSize = 1)
 	@Id 
 	@GeneratedValue(generator="Cust_Gen")
+	//@GeneratedValue
 	private Long id;
 	private String name;
 	private String address;
