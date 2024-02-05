@@ -1,0 +1,20 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /web
+
+#  liberty:
+#  install-location: ./wlp
+#    config-location: ./wlp/usr/servers/defaultServer
+
+
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1523/xe
+    username: raifoddin
+    password: Admin1234
+    datasource.driver-class-name: oracle.jdbc.driver.oracledriver
+
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    
